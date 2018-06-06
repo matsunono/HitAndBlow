@@ -236,10 +236,15 @@ namespace HitAndBlow
                         {
                             button.Visible = false;
                         }
-                        label1.Focus();
+                       
                     }
                 }
             }
+            if ((e.KeyValue == 0x08))
+            {
+                
+            }
+            label1.Focus();
         }
 
         //メモボタンをクリックしたときの処理

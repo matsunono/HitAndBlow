@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HitAndBlow", "HitAndBlow\HitAndBlow.csproj", "{F4D1032E-7874-4A56-8009-921A42449166}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{A3D40EAA-A18D-4250-A349-16A760975D3C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup2", "setup2\setup2.vdproj", "{1E25DA12-B700-475D-A062-EDCA9A518EDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{F4D1032E-7874-4A56-8009-921A42449166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D1032E-7874-4A56-8009-921A42449166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D1032E-7874-4A56-8009-921A42449166}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3D40EAA-A18D-4250-A349-16A760975D3C}.Debug|Any CPU.ActiveCfg = Debug
-		{A3D40EAA-A18D-4250-A349-16A760975D3C}.Release|Any CPU.ActiveCfg = Release
+		{1E25DA12-B700-475D-A062-EDCA9A518EDB}.Debug|Any CPU.ActiveCfg = Debug
+		{1E25DA12-B700-475D-A062-EDCA9A518EDB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

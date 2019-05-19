@@ -19,6 +19,20 @@ namespace HitAndBlow
         public int[] Answer;
         int count = 0;
 
+        private void button_visible(bool visible)
+        {
+            button1.Visible = visible;
+            button2.Visible = visible;
+            button3.Visible = visible;
+            button4.Visible = visible;
+            button5.Visible = visible;
+            button6.Visible = visible;
+            button7.Visible = visible;
+            button8.Visible = visible;
+            button9.Visible = visible;
+            label1.Focus();
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +40,22 @@ namespace HitAndBlow
             Check_Button.Visible = false;
             label1.Focus();
             this.KeyPreview = true;
+
+            if (Check_Button.Visible != true)
+            {
+                DialogResult result = MessageBox.Show("Hit And Blowを始めますか？", "質問", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    start();
+                }
+                else if (result == DialogResult.No)
+                {
+                    Environment.Exit(0);
+                }
+            }
         }
-        
+
+
 
         private void Number_Button_Click(object sender, EventArgs e)
         {
@@ -46,20 +74,16 @@ namespace HitAndBlow
         private void Clear_Button_Click(object sender, EventArgs e)
         {
             label1.Text = "";
-            button1.Visible = true;
-            button2.Visible = true;
-            button3.Visible = true;
-            button4.Visible = true;
-            button5.Visible = true;
-            button6.Visible = true;
-            button7.Visible = true;
-            button8.Visible = true;
-            button9.Visible = true;
-            label1.Focus();
+            button_visible(true);
         }
 
         //スタートボタンで乱数作成
+
         private void Start_Button_Click(object sender, EventArgs e)
+        {
+            start();
+        }
+        private void start()
         {
             sw.Restart();
             count = 0;
@@ -68,15 +92,8 @@ namespace HitAndBlow
             label3.Text = "";
             label2.Text = "H  B";
             label1.Text = "";
-            button1.Visible = true;
-            button2.Visible = true;
-            button3.Visible = true;
-            button4.Visible = true;
-            button5.Visible = true;
-            button6.Visible = true;
-            button7.Visible = true;
-            button8.Visible = true;
-            button9.Visible = true;
+            button_visible(true);
+            Clear_Button.Visible = true;
 
             Random rnd = new Random();
 
@@ -98,8 +115,12 @@ namespace HitAndBlow
             label1.Focus();
         }
 
-        //Checkボタンを押すと答えと照らし合わせる
         private void Check_Button_Click(object sender, EventArgs e)
+        {
+            check();
+        }
+        //Checkボタンを押すと答えと照らし合わせる
+        private void check()
         {
             if (label1.Text.Length == 4)
             {
@@ -171,12 +192,12 @@ namespace HitAndBlow
                                 MessageBox.Show("おめでとうございます！\nあなたのタイムは" + span.ToString("hh':'mm':'ss") + "で、" + count + "回目で当てました");
                             }
                         }
-                        
+
                         else
                         {
                             MessageBox.Show("おめでとうございます！\nあなたのタイムは" + span.ToString("hh':'mm':'ss") + "で、" + count + "回目で当てました");
                         }
- 
+
                         Check_Button.Visible = false;
                     }
                 }
@@ -222,7 +243,8 @@ namespace HitAndBlow
         {
             Console.WriteLine(e.KeyCode);
             int keyValue;
-            if ((e.KeyValue >= 0x31) && (e.KeyValue <= 0x39))
+
+            if ((e.KeyValue >= 0x31) && (e.KeyValue <= 0x39)) //数字キー押すと数字が打たれるよ
             {
                 keyValue = e.KeyValue - 0x30;
                 if (label1.Text.Length < 4)
@@ -236,15 +258,24 @@ namespace HitAndBlow
                         {
                             button.Visible = false;
                         }
-                       
+                        label1.Focus();
                     }
                 }
             }
-            if ((e.KeyValue == 0x08))
+            if (e.KeyValue == 0x08)// backspaceキーを押すと一文字消去する
             {
-                
+                if (label1.Text.Length != 0)
+                {
+                    keyValue = int.Parse(label1.Text.Substring(label1.Text.Length - 1));
+                    Button button = Get_Button_Object(keyValue);
+                    button.Visible = true;
+                    label1.Text = label1.Text.Remove(label1.Text.Length - 1);
+                }
             }
-            label1.Focus();
+            if (e.KeyValue == 0x0d)//enterキーを押すとcheck
+            {
+                check();
+            }
         }
 
         //メモボタンをクリックしたときの処理
@@ -265,5 +296,5 @@ namespace HitAndBlow
     }
 }
 
-       
+
 
